@@ -12,4 +12,7 @@ if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
-add_executable(openrdv_agent main.cpp)
+include_directories(include)
+
+add_executable(openrdv_agent main.cpp src/AttestProviderLoader.cpp)
+target_link_libraries(openrdv_agent pthread)
