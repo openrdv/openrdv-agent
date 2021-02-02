@@ -1,14 +1,15 @@
-#ifndef OPENRDV_AGENT_ATTESTPROVIDER_H
-#define OPENRDV_AGENT_ATTESTPROVIDER_H
+#ifndef OPENRDV_AGENT_ATTESTPLUGIN_H
+#define OPENRDV_AGENT_ATTESTPLUGIN_H
 
+#include <boost/config.hpp>
 #include <string>
 #include <unordered_map>
 
-#include <boost/config.hpp>
+namespace openrdv {
 
 typedef std::unordered_map<std::string, std::string> AttestResult;
 
-enum AttestStatus {
+enum class AttestStatus {
   InitializeSuccess,
   InitializeErrorUnknown,
   InitializeErrorUnsafe,
@@ -17,7 +18,7 @@ enum AttestStatus {
   CleanupErrorUnknown
 };
 
-class BOOST_SYMBOL_VISIBLE AttestProvider {
+class BOOST_SYMBOL_VISIBLE AttestPlugin {
 public:
   virtual AttestStatus initialize() = 0;
   virtual AttestResult run() = 0;
@@ -26,4 +27,6 @@ public:
   virtual std::string description() = 0;
 };
 
-#endif // OPENRDV_AGENT_ATTESTPROVIDER_H
+} // namespace openrdv
+
+#endif // OPENRDV_AGENT_ATTESTPLUGIN_H

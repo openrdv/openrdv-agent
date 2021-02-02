@@ -1,4 +1,4 @@
-int main(int argc, char** argv)
-{
-	return 0;
-}
+#include <AttestPluginLoader.h>
+#include <iostream>
+
+int main(int argc, char **argv) { return 0; }
