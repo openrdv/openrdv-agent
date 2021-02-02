@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 
+#include <boost/config.hpp>
+
 typedef std::unordered_map<std::string, std::string> AttestResult;
 
 enum AttestStatus {
@@ -15,7 +17,7 @@ enum AttestStatus {
   CleanupErrorUnknown
 };
 
-class AttestProvider {
+class BOOST_SYMBOL_VISIBLE AttestProvider {
 public:
   virtual AttestStatus initialize() = 0;
   virtual AttestResult run() = 0;

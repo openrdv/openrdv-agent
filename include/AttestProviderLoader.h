@@ -12,6 +12,7 @@ private:
 public:
   std::string Location;
 
+  explicit AttestProviderLoader(std::string  location);
   int load();
   std::vector<AttestProvider> providers();
 };
