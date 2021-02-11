@@ -2,6 +2,7 @@
 #define OPENRDV_AGENT_ATTESTPLUGINLOADER_H
 
 #include <AttestPlugin.h>
+#include <boost/filesystem/path.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <string>
 #include <vector>
@@ -15,12 +16,14 @@ private:
   std::vector<shared_ptr<AttestPlugin>> Providers;
 
 public:
-  std::string Location;
+  explicit AttestPluginLoader() = default;
+  int loadDirectory(const std::string &path);
+  shared_ptr<AttestPlugin> loadFile(const boost::filesystem::path& path);
 
-  explicit AttestPluginLoader(std::string location);
-  int load();
-  shared_ptr<AttestPlugin> load(const std::string &path);
   std::vector<shared_ptr<AttestPlugin>> providers();
+
+private:
+  bool initializePlugin(shared_ptr<AttestPlugin> plugin);
 };
 
 } // namespace openrdv
