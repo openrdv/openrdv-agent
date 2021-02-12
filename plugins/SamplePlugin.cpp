@@ -1,6 +1,6 @@
 #include <AttestPlugin.h>
 
-namespace openrdv {
+using namespace openrdv;
 
 class SamplePlugin : public AttestPlugin {
 public:
@@ -19,5 +19,3 @@ public:
 
 extern "C" BOOST_SYMBOL_EXPORT SamplePlugin plugin;
 SamplePlugin plugin;
-
-} // namespace openrdv

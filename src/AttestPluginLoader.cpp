@@ -6,7 +6,7 @@
 
 using boost::shared_ptr;
 
-namespace openrdv {
+using namespace openrdv;
 
 static bool isLibraryExtension(boost::filesystem::path ex) {
   if (ex == ".so" || ex == ".dll") {
@@ -65,5 +65,3 @@ bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> plugin) {
   }
   return false;
 }
-
-} // namespace openrdv
