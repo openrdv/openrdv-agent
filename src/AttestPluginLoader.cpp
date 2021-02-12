@@ -8,8 +8,8 @@ using boost::shared_ptr;
 
 using namespace openrdv;
 
-static bool isLibraryExtension(boost::filesystem::path ex) {
-  if (ex == ".so" || ex == ".dll") {
+static bool isLibraryExtension(boost::filesystem::path Ex) {
+  if (Ex == ".so" || Ex == ".dll") {
     return true;
   }
   return false;
@@ -20,48 +20,47 @@ std::vector<shared_ptr<AttestPlugin>> AttestPluginLoader::providers() {
 }
 
 shared_ptr<AttestPlugin>
-AttestPluginLoader::loadFile(const boost::filesystem::path &path) {
-  shared_ptr<AttestPlugin> plugin;
-  plugin = boost::dll::import<AttestPlugin>(
-      path, "plugin", boost::dll::load_mode::append_decorations);
-  return plugin;
+AttestPluginLoader::loadFile(const boost::filesystem::path &Path) {
+  shared_ptr<AttestPlugin> Plugin;
+  Plugin = boost::dll::import<AttestPlugin>(
+      Path, "plugin", boost::dll::load_mode::append_decorations);
+  return Plugin;
 }
 
-int AttestPluginLoader::loadDirectory(const std::string &path) {
+int AttestPluginLoader::loadDirectory(const std::string &Path) {
   using namespace boost::filesystem;
-  boost::filesystem::path dir(path);
-  int count = -1;
+  boost::filesystem::path Dir(Path);
+  int Count = -1;
   try {
-    if (exists(dir) && is_directory(dir)) {
-      count = 0;
-      for (auto it = directory_iterator(dir); it != directory_iterator();
-           it++) {
-        if (isLibraryExtension(it->path().extension())) {
-          auto plugin = loadFile(it->path());
-          if (initializePlugin(plugin))
-            count++;
+    if (exists(Dir) && is_directory(Dir)) {
+      Count = 0;
+      for (auto It = directory_iterator(Dir); It != directory_iterator();
+           It++) {
+        if (isLibraryExtension(It->path().extension())) {
+          auto Plugin = loadFile(It->path());
+          if (initializePlugin(Plugin))
+            Count++;
         }
       }
     }
-  } catch (const std::exception &e) {
-    std::cout << e.what() << "\n";
+  } catch (const std::exception &E) {
+    std::cout << E.what() << "\n";
   }
 
-  return count;
+  return Count;
 }
 
-bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> plugin) {
-  if (plugin != nullptr) {
-    auto status = plugin->initialize();
-    if (status == AttestStatus::InitializeSuccess) {
-      Providers.push_back(plugin);
-      std::cout << "Initialized plugin: " << plugin->name() << " ["
-                << plugin->description() << "]"
+bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> Plugin) {
+  if (Plugin != nullptr) {
+    auto Status = Plugin->initialize();
+    if (Status == AttestStatus::InitializeSuccess) {
+      Providers.push_back(Plugin);
+      std::cout << "Initialized plugin: " << Plugin->name() << " ["
+                << Plugin->description() << "]"
                 << "\n";
       return true;
-    } else {
-      std::cout << "Failed to initialize plugin: " << plugin->name() << "\n";
-    }
+    }       std::cout << "Failed to initialize plugin: " << Plugin->name() << "\n";
+
   }
   return false;
 }

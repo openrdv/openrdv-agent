@@ -1,5 +1,5 @@
-#ifndef OPENRDV_AGENT_ATTESTPLUGIN_H
-#define OPENRDV_AGENT_ATTESTPLUGIN_H
+#ifndef ATTESTPLUGIN_H
+#define ATTESTPLUGIN_H
 
 #include <boost/config.hpp>
 #include <string>
@@ -29,4 +29,4 @@ public:
 
 } // namespace openrdv
 
-#endif // OPENRDV_AGENT_ATTESTPLUGIN_H
+#endif // ATTESTPLUGIN_H

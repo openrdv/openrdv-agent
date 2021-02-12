@@ -1,0 +1,55 @@
+\hypertarget{classopenrdv_1_1AttestPluginLoader}{}\doxysection{openrdv\+::Attest\+Plugin\+Loader Class Reference}
+\label{classopenrdv_1_1AttestPluginLoader}\index{openrdv::AttestPluginLoader@{openrdv::AttestPluginLoader}}
+
+
+{\ttfamily \#include $<$Attest\+Plugin\+Loader.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classopenrdv_1_1AttestPluginLoader_a28def70eedd3266d49ae2813f06e4e88}\label{classopenrdv_1_1AttestPluginLoader_a28def70eedd3266d49ae2813f06e4e88}} 
+int {\bfseries load\+Directory} (const std\+::string \&Path)
+\item 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{classopenrdv_1_1AttestPlugin}{Attest\+Plugin}} $>$ \mbox{\hyperlink{classopenrdv_1_1AttestPluginLoader_a0f5ba088da7c8c6ad2c9d00b835111f4}{load\+File}} (const boost\+::filesystem\+::path \&Path)
+\item 
+std\+::vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{classopenrdv_1_1AttestPlugin}{Attest\+Plugin}} $>$ $>$ \mbox{\hyperlink{classopenrdv_1_1AttestPluginLoader_a421e82352310a004bf1bc915c70c7435}{providers}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Attestation plugin loader.
+
+Loads plugins from the specified directory or file. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classopenrdv_1_1AttestPluginLoader_a0f5ba088da7c8c6ad2c9d00b835111f4}\label{classopenrdv_1_1AttestPluginLoader_a0f5ba088da7c8c6ad2c9d00b835111f4}} 
+\index{openrdv::AttestPluginLoader@{openrdv::AttestPluginLoader}!loadFile@{loadFile}}
+\index{loadFile@{loadFile}!openrdv::AttestPluginLoader@{openrdv::AttestPluginLoader}}
+\doxysubsubsection{\texorpdfstring{loadFile()}{loadFile()}}
+{\footnotesize\ttfamily shared\+\_\+ptr$<$ \mbox{\hyperlink{classopenrdv_1_1AttestPlugin}{Attest\+Plugin}} $>$ Attest\+Plugin\+Loader\+::load\+File (\begin{DoxyParamCaption}\item[{const boost\+::filesystem\+::path \&}]{Path }\end{DoxyParamCaption})}
+
+Load library as plugin.
+
+Try to load .so or .dll file at the specified location as plugin. 
+\begin{DoxyParams}{Parameters}
+{\em Path} & to the library file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily std\+::shared\+\_\+ptr} to the plugin instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classopenrdv_1_1AttestPluginLoader_a421e82352310a004bf1bc915c70c7435}\label{classopenrdv_1_1AttestPluginLoader_a421e82352310a004bf1bc915c70c7435}} 
+\index{openrdv::AttestPluginLoader@{openrdv::AttestPluginLoader}!providers@{providers}}
+\index{providers@{providers}!openrdv::AttestPluginLoader@{openrdv::AttestPluginLoader}}
+\doxysubsubsection{\texorpdfstring{providers()}{providers()}}
+{\footnotesize\ttfamily std\+::vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{classopenrdv_1_1AttestPlugin}{Attest\+Plugin}} $>$ $>$ Attest\+Plugin\+Loader\+::providers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for Providers. \begin{DoxyReturn}{Returns}
+Shared pointer to the providers vector. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Attest\+Plugin\+Loader.\+h\item 
+src/Attest\+Plugin\+Loader.\+cpp\end{DoxyCompactItemize}

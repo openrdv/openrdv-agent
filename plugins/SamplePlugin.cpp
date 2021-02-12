@@ -17,5 +17,5 @@ public:
   }
 };
 
-extern "C" BOOST_SYMBOL_EXPORT SamplePlugin plugin;
-SamplePlugin plugin;
+extern "C" BOOST_SYMBOL_EXPORT SamplePlugin Plugin;
+SamplePlugin Plugin;

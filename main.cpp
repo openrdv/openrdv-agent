@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  openrdv::AttestPluginLoader loader;
-  loader.loadDirectory(".");
+  openrdv::AttestPluginLoader Loader;
+  Loader.loadDirectory(".");
   return 0;
 }
