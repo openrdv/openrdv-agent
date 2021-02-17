@@ -23,7 +23,7 @@ shared_ptr<AttestPlugin>
 AttestPluginLoader::loadFile(const boost::filesystem::path &Path) {
   shared_ptr<AttestPlugin> Plugin;
   Plugin = boost::dll::import<AttestPlugin>(
-      Path, "plugin", boost::dll::load_mode::append_decorations);
+      Path, "Plugin", boost::dll::load_mode::append_decorations);
   return Plugin;
 }
 
