@@ -59,8 +59,8 @@ bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> Plugin) {
                 << Plugin->description() << "]"
                 << "\n";
       return true;
-    }       std::cout << "Failed to initialize plugin: " << Plugin->name() << "\n";
-
+    }
+    std::cout << "Failed to initialize plugin: " << Plugin->name() << "\n";
   }
   return false;
 }

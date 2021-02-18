@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loadfile_2',['loadFile',['../classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4',1,'openrdv::AttestPluginLoader']]]
+  ['cleanup_2',['cleanup',['../classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282',1,'openrdv::AttestPlugin::cleanup()'],['../classSamplePlugin.html#aee5cc0d26e3662177c7868e86c6096a5',1,'SamplePlugin::cleanup()']]]
 ];

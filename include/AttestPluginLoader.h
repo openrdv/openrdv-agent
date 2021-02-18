@@ -11,30 +11,46 @@ namespace openrdv {
 
 using boost::shared_ptr;
 
-/// Attestation plugin loader.
-///
-/// Loads plugins from the specified directory or file.
+/**
+ * @brief Attestation plugin loader.
+ *
+ * Loads plugins from the specified directory or file.
+ */
 class AttestPluginLoader {
 private:
   std::vector<shared_ptr<AttestPlugin>> Providers;
 
+  bool initializePlugin(shared_ptr<AttestPlugin> Plugin);
+
 public:
   explicit AttestPluginLoader() = default;
+
+  /**
+   * @brief Load all plugins in the specified directory.
+   *
+   * Iterates through all files in the directory and tries to load those,
+   * which have either .so or .dll name extension.
+   * @param Path to a directory.
+   * @return @c int number of loaded libraries.
+   */
   int loadDirectory(const std::string &Path);
 
-  /// Load library as plugin.
-  ///
-  /// Try to load .so or .dll file at the specified location as plugin.
-  /// \param Path to the library file.
-  /// \return \c std::shared_ptr to the plugin instance.
-  shared_ptr<AttestPlugin> loadFile(const boost::filesystem::path& Path);
+  /**
+   * @brief Load library as plugin.
+   *
+   * Try to load .so or .dll file at the specified location as plugin.
+   * @param Path to the library file.
+   * @return @c shared_ptr<AttestPlugin> to the plugin instance.
+   */
+  shared_ptr<AttestPlugin> loadFile(const boost::filesystem::path &Path);
 
-  /// Getter for Providers.
-  /// \return Shared pointer to the providers vector.
+  /**
+   * @brief Getter for Providers.
+   *
+   * @return @c std::vector<shared_ptr<AttestPlugin>> Shared pointer to the
+   * providers vector.
+   */
   std::vector<shared_ptr<AttestPlugin>> providers();
-
-private:
-  bool initializePlugin(shared_ptr<AttestPlugin> Plugin);
 };
 
 } // namespace openrdv
