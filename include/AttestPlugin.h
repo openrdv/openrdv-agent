@@ -8,6 +8,7 @@
 namespace openrdv {
 
 using AttestResult = std::unordered_map<std::string, std::string>;
+using AttestResultSingle = std::pair<std::string, std::string>;
 
 enum class AttestStatus {
   InitializeSuccess,

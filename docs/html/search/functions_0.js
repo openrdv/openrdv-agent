@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cleanup_15',['cleanup',['../classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282',1,'openrdv::AttestPlugin::cleanup()'],['../classSamplePlugin.html#aee5cc0d26e3662177c7868e86c6096a5',1,'SamplePlugin::cleanup()']]]
+  ['attestmanager_18',['AttestManager',['../classopenrdv_1_1AttestManager.html#a0242a3d64b5eb36fa5b0c77a09dab599',1,'openrdv::AttestManager']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['loaddirectory_18',['loadDirectory',['../classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88',1,'openrdv::AttestPluginLoader']]],
-  ['loadfile_19',['loadFile',['../classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4',1,'openrdv::AttestPluginLoader']]]
+  ['initialize_21',['initialize',['../classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210',1,'openrdv::AttestPlugin::initialize()'],['../classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c',1,'SamplePlugin::initialize()']]]
 ];

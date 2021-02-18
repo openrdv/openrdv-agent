@@ -79,44 +79,44 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>openrdv {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> std::unordered_map&lt;std::string, std::string&gt; AttestResult;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">enum class</span> AttestStatus {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  InitializeSuccess,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  InitializeErrorUnknown,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  InitializeErrorUnsafe,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  InitializeErrorInternal,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  CleanupSuccess,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  CleanupErrorUnknown</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html">   26</a></span>&#160;<span class="keyword">class </span>BOOST_SYMBOL_VISIBLE <a class="code" href="classopenrdv_1_1AttestPlugin.html">AttestPlugin</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210">   33</a></span>&#160;  <span class="keyword">virtual</span> AttestStatus <a class="code" href="classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210">initialize</a>() = 0;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#ad7d356689db497497d7dd51a7e060f90">   40</a></span>&#160;  <span class="keyword">virtual</span> AttestResult <a class="code" href="classopenrdv_1_1AttestPlugin.html#ad7d356689db497497d7dd51a7e060f90">run</a>() = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282">   47</a></span>&#160;  <span class="keyword">virtual</span> AttestStatus <a class="code" href="classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282">cleanup</a>() = 0;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a7e803ba057c51d4ef622556228fec481">   54</a></span>&#160;  <span class="keyword">virtual</span> std::string <a class="code" href="classopenrdv_1_1AttestPlugin.html#a7e803ba057c51d4ef622556228fec481">name</a>() = 0;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a0114b8fe8628a3cc8af6c374deda619c">   61</a></span>&#160;  <span class="keyword">virtual</span> std::string <a class="code" href="classopenrdv_1_1AttestPlugin.html#a0114b8fe8628a3cc8af6c374deda619c">description</a>() = 0;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace openrdv</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // ATTESTPLUGIN_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> AttestResult = std::unordered_map&lt;std::string, std::string&gt;;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> AttestResultSingle = std::pair&lt;std::string, std::string&gt;;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">enum class</span> AttestStatus {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  InitializeSuccess,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  InitializeErrorUnknown,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  InitializeErrorUnsafe,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  InitializeErrorInternal,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  CleanupSuccess,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  CleanupErrorUnknown</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html">   27</a></span>&#160;<span class="keyword">class </span>BOOST_SYMBOL_VISIBLE <a class="code" href="classopenrdv_1_1AttestPlugin.html">AttestPlugin</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210">   34</a></span>&#160;  <span class="keyword">virtual</span> AttestStatus <a class="code" href="classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210">initialize</a>() = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#ad7d356689db497497d7dd51a7e060f90">   41</a></span>&#160;  <span class="keyword">virtual</span> AttestResult <a class="code" href="classopenrdv_1_1AttestPlugin.html#ad7d356689db497497d7dd51a7e060f90">run</a>() = 0;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282">   48</a></span>&#160;  <span class="keyword">virtual</span> AttestStatus <a class="code" href="classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282">cleanup</a>() = 0;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a7e803ba057c51d4ef622556228fec481">   55</a></span>&#160;  <span class="keyword">virtual</span> std::string <a class="code" href="classopenrdv_1_1AttestPlugin.html#a7e803ba057c51d4ef622556228fec481">name</a>() = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPlugin.html#a0114b8fe8628a3cc8af6c374deda619c">   62</a></span>&#160;  <span class="keyword">virtual</span> std::string <a class="code" href="classopenrdv_1_1AttestPlugin.html#a0114b8fe8628a3cc8af6c374deda619c">description</a>() = 0;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace openrdv</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif // ATTESTPLUGIN_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html_a7e803ba057c51d4ef622556228fec481"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html#a7e803ba057c51d4ef622556228fec481">openrdv::AttestPlugin::name</a></div><div class="ttdeci">virtual std::string name()=0</div><div class="ttdoc">Plugin name getter.</div></div>
-<div class="ttc" id="aclassSamplePlugin_html"><div class="ttname"><a href="classSamplePlugin.html">SamplePlugin</a></div><div class="ttdef"><b>Definition:</b> <a href="SamplePlugin_8cpp_source.html#l00005">SamplePlugin.cpp:5</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html_a0114b8fe8628a3cc8af6c374deda619c"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html#a0114b8fe8628a3cc8af6c374deda619c">openrdv::AttestPlugin::description</a></div><div class="ttdeci">virtual std::string description()=0</div><div class="ttdoc">Plugin description getter.</div></div>
 <div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html_a78d6dce70dbe1dccac3e56f17c55c210"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210">openrdv::AttestPlugin::initialize</a></div><div class="ttdeci">virtual AttestStatus initialize()=0</div><div class="ttdoc">Allocate memory or perform initial checks.</div></div>
 <div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html_ad7d356689db497497d7dd51a7e060f90"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html#ad7d356689db497497d7dd51a7e060f90">openrdv::AttestPlugin::run</a></div><div class="ttdeci">virtual AttestResult run()=0</div><div class="ttdoc">Performs corresponding checks.</div></div>
 <div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html_a85b9a5f41abd649743e2646a5bf5f282"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html#a85b9a5f41abd649743e2646a5bf5f282">openrdv::AttestPlugin::cleanup</a></div><div class="ttdeci">virtual AttestStatus cleanup()=0</div><div class="ttdoc">Free memory and do other cleaning operations.</div></div>
-<div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html">openrdv::AttestPlugin</a></div><div class="ttdoc">Attestation plugin interface.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPlugin_8h_source.html#l00026">AttestPlugin.h:26</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1AttestPlugin_html"><div class="ttname"><a href="classopenrdv_1_1AttestPlugin.html">openrdv::AttestPlugin</a></div><div class="ttdoc">Attestation plugin interface.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPlugin_8h_source.html#l00027">AttestPlugin.h:27</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 18 2021 17:02:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 19 2021 01:34:41 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

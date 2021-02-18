@@ -15,8 +15,20 @@ private:
 
 public:
   explicit AttestManager() = default;
+  /**
+   * Initialize manager with the specified directory.
+   *
+   * Creates @c AttestPluginLoader and tries to load plugins
+   * from the specified directory.
+   * @param Directory to load plugins from.
+   */
   AttestManager(const boost::filesystem::path &Directory);
 
+  /**
+   * Run all tests.
+   *
+   * @return @c AttestResultMap results for all providers.
+   */
   AttestResultMap runTests();
 };
 

@@ -81,9 +81,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a28def70eedd3266d49ae2813f06e4e88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88">loadDirectory</a> (const std::string &amp;Path)</td></tr>
-<tr class="memdesc:a28def70eedd3266d49ae2813f06e4e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load all plugins in the specified directory.  <a href="classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88">More...</a><br /></td></tr>
-<tr class="separator:a28def70eedd3266d49ae2813f06e4e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afab5cf22c02c024ebab879e41413a923"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1AttestPluginLoader.html#afab5cf22c02c024ebab879e41413a923">loadDirectory</a> (const boost::filesystem::path &amp;Path)</td></tr>
+<tr class="memdesc:afab5cf22c02c024ebab879e41413a923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load all plugins in the specified directory.  <a href="classopenrdv_1_1AttestPluginLoader.html#afab5cf22c02c024ebab879e41413a923">More...</a><br /></td></tr>
+<tr class="separator:afab5cf22c02c024ebab879e41413a923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f5ba088da7c8c6ad2c9d00b835111f4"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="classopenrdv_1_1AttestPlugin.html">AttestPlugin</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">loadFile</a> (const boost::filesystem::path &amp;Path)</td></tr>
 <tr class="memdesc:a0f5ba088da7c8c6ad2c9d00b835111f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load library as plugin.  <a href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">More...</a><br /></td></tr>
 <tr class="separator:a0f5ba088da7c8c6ad2c9d00b835111f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,8 +97,8 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8h_source.html#l00019">19</a> of file <a class="el" href="AttestPluginLoader_8h_source.html">AttestPluginLoader.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a28def70eedd3266d49ae2813f06e4e88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28def70eedd3266d49ae2813f06e4e88">&#9670;&nbsp;</a></span>loadDirectory()</h2>
+<a id="afab5cf22c02c024ebab879e41413a923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afab5cf22c02c024ebab879e41413a923">&#9670;&nbsp;</a></span>loadDirectory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,7 +106,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int AttestPluginLoader::loadDirectory </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">const boost::filesystem::path &amp;&#160;</td>
           <td class="paramname"><em>Path</em></td><td>)</td>
           <td></td>
         </tr>
@@ -122,9 +122,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>int</code> number of loaded libraries. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00030">30</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00029">29</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="AttestPluginLoader_8cpp_source.html#l00023">loadFile()</a>.</p>
+<p class="reference">References <a class="el" href="AttestPluginLoader_8cpp_source.html#l00022">loadFile()</a>.</p>
 
 </div>
 </div>
@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>shared_ptr&lt;AttestPlugin&gt;</code> to the plugin instance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00023">23</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00022">22</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,7 +175,7 @@ Public Member Functions</h2></td></tr>
 <p>Getter for Providers. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>std::vector&lt;shared_ptr&lt;AttestPlugin&gt;&gt;</code> Shared pointer to the providers vector. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00018">18</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="AttestPluginLoader_8cpp_source.html#l00017">17</a> of file <a class="el" href="AttestPluginLoader_8cpp_source.html">AttestPluginLoader.cpp</a>.</p>
 
 </div>
 </div>
@@ -186,7 +186,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 18 2021 17:02:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 19 2021 01:34:41 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

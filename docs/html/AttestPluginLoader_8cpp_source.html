@@ -74,78 +74,76 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;boost/dll.hpp&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using</span> boost::shared_ptr;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>openrdv;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> isLibraryExtension(boost::filesystem::path Ex) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="keywordflow">if</span> (Ex == <span class="stringliteral">&quot;.so&quot;</span> || Ex == <span class="stringliteral">&quot;.dll&quot;</span>) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  }</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">   18</a></span>&#160;std::vector&lt;shared_ptr&lt;AttestPlugin&gt;&gt; <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">AttestPluginLoader::providers</a>() {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordflow">return</span> Providers;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;shared_ptr&lt;AttestPlugin&gt;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">   23</a></span>&#160;<a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">AttestPluginLoader::loadFile</a>(<span class="keyword">const</span> boost::filesystem::path &amp;Path) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  shared_ptr&lt;AttestPlugin&gt; Plugin;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  Plugin = boost::dll::import&lt;AttestPlugin&gt;(</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      Path, <span class="stringliteral">&quot;Plugin&quot;</span>, boost::dll::load_mode::append_decorations);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">return</span> Plugin;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88">   30</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88">AttestPluginLoader::loadDirectory</a>(<span class="keyword">const</span> std::string &amp;Path) {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">using namespace </span>boost::filesystem;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  boost::filesystem::path Dir(Path);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordtype">int</span> Count = -1;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (exists(Dir) &amp;&amp; is_directory(Dir)) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      Count = 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> It = directory_iterator(Dir); It != directory_iterator();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;           It++) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (isLibraryExtension(It-&gt;path().extension())) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;          <span class="keyword">auto</span> Plugin = <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">loadFile</a>(It-&gt;path());</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;          <span class="keywordflow">if</span> (initializePlugin(Plugin))</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            Count++;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;E) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::cout &lt;&lt; E.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">return</span> Count;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">bool</span> AttestPluginLoader::initializePlugin(shared_ptr&lt;AttestPlugin&gt; Plugin) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">if</span> (Plugin != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">auto</span> Status = Plugin-&gt;<a class="code" href="classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c">initialize</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (Status == AttestStatus::InitializeSuccess) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      Providers.push_back(Plugin);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Initialized plugin: &quot;</span> &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a832684226ee4bbb33db47553f8bbed05">name</a>() &lt;&lt; <span class="stringliteral">&quot; [&quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a7e85b780b844e7444013d8f50696c310">description</a>() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }       std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to initialize plugin: &quot;</span> &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a832684226ee4bbb33db47553f8bbed05">name</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> boost::shared_ptr;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>openrdv;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> isLibraryExtension(boost::filesystem::path Ex) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordflow">if</span> (Ex == <span class="stringliteral">&quot;.so&quot;</span> || Ex == <span class="stringliteral">&quot;.dll&quot;</span>) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">   17</a></span>&#160;std::vector&lt;shared_ptr&lt;AttestPlugin&gt;&gt; <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">AttestPluginLoader::providers</a>() {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordflow">return</span> Providers;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;shared_ptr&lt;AttestPlugin&gt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">   22</a></span>&#160;<a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">AttestPluginLoader::loadFile</a>(<span class="keyword">const</span> boost::filesystem::path &amp;Path) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  shared_ptr&lt;AttestPlugin&gt; Plugin;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  Plugin = boost::dll::import&lt;AttestPlugin&gt;(</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      Path, <span class="stringliteral">&quot;Plugin&quot;</span>, boost::dll::load_mode::append_decorations);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">return</span> Plugin;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classopenrdv_1_1AttestPluginLoader.html#afab5cf22c02c024ebab879e41413a923">   29</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#afab5cf22c02c024ebab879e41413a923">AttestPluginLoader::loadDirectory</a>(<span class="keyword">const</span> boost::filesystem::path &amp;Path) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keyword">using namespace </span>boost::filesystem;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  boost::filesystem::path Dir(Path);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">int</span> Count = -1;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (exists(Dir) &amp;&amp; is_directory(Dir)) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      Count = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">auto</span> It = directory_iterator(Dir); It != directory_iterator();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;           It++) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (isLibraryExtension(It-&gt;path().extension())) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          <span class="keyword">auto</span> Plugin = <a class="code" href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">loadFile</a>(It-&gt;path());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;          <span class="keywordflow">if</span> (initializePlugin(Plugin))</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            Count++;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;E) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::cout &lt;&lt; E.what() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">return</span> Count;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">bool</span> AttestPluginLoader::initializePlugin(shared_ptr&lt;AttestPlugin&gt; Plugin) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">if</span> (Plugin != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">auto</span> Status = Plugin-&gt;<a class="code" href="classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c">initialize</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (Status == AttestStatus::InitializeSuccess) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      Providers.push_back(Plugin);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Initialized plugin: &quot;</span> &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a832684226ee4bbb33db47553f8bbed05">name</a>() &lt;&lt; <span class="stringliteral">&quot; [&quot;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a7e85b780b844e7444013d8f50696c310">description</a>() &lt;&lt; <span class="stringliteral">&quot;]\n&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to initialize plugin: &quot;</span> &lt;&lt; Plugin-&gt;<a class="code" href="classSamplePlugin.html#a832684226ee4bbb33db47553f8bbed05">name</a>() &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_a421e82352310a004bf1bc915c70c7435"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">openrdv::AttestPluginLoader::providers</a></div><div class="ttdeci">std::vector&lt; shared_ptr&lt; AttestPlugin &gt; &gt; providers()</div><div class="ttdoc">Getter for Providers.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00018">AttestPluginLoader.cpp:18</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_a421e82352310a004bf1bc915c70c7435"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#a421e82352310a004bf1bc915c70c7435">openrdv::AttestPluginLoader::providers</a></div><div class="ttdeci">std::vector&lt; shared_ptr&lt; AttestPlugin &gt; &gt; providers()</div><div class="ttdoc">Getter for Providers.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00017">AttestPluginLoader.cpp:17</a></div></div>
 <div class="ttc" id="aclassSamplePlugin_html_a832684226ee4bbb33db47553f8bbed05"><div class="ttname"><a href="classSamplePlugin.html#a832684226ee4bbb33db47553f8bbed05">SamplePlugin::name</a></div><div class="ttdeci">std::string name() override</div><div class="ttdoc">Plugin name getter.</div><div class="ttdef"><b>Definition:</b> <a href="SamplePlugin_8cpp_source.html#l00013">SamplePlugin.cpp:13</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_a28def70eedd3266d49ae2813f06e4e88"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#a28def70eedd3266d49ae2813f06e4e88">openrdv::AttestPluginLoader::loadDirectory</a></div><div class="ttdeci">int loadDirectory(const std::string &amp;Path)</div><div class="ttdoc">Load all plugins in the specified directory.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00030">AttestPluginLoader.cpp:30</a></div></div>
 <div class="ttc" id="aclassSamplePlugin_html_a95f7080493a79fc88c46bf519568720c"><div class="ttname"><a href="classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c">SamplePlugin::initialize</a></div><div class="ttdeci">AttestStatus initialize() override</div><div class="ttdoc">Allocate memory or perform initial checks.</div><div class="ttdef"><b>Definition:</b> <a href="SamplePlugin_8cpp_source.html#l00007">SamplePlugin.cpp:7</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_a0f5ba088da7c8c6ad2c9d00b835111f4"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">openrdv::AttestPluginLoader::loadFile</a></div><div class="ttdeci">shared_ptr&lt; AttestPlugin &gt; loadFile(const boost::filesystem::path &amp;Path)</div><div class="ttdoc">Load library as plugin.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00023">AttestPluginLoader.cpp:23</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_a0f5ba088da7c8c6ad2c9d00b835111f4"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4">openrdv::AttestPluginLoader::loadFile</a></div><div class="ttdeci">shared_ptr&lt; AttestPlugin &gt; loadFile(const boost::filesystem::path &amp;Path)</div><div class="ttdoc">Load library as plugin.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00022">AttestPluginLoader.cpp:22</a></div></div>
 <div class="ttc" id="aclassSamplePlugin_html_a7e85b780b844e7444013d8f50696c310"><div class="ttname"><a href="classSamplePlugin.html#a7e85b780b844e7444013d8f50696c310">SamplePlugin::description</a></div><div class="ttdeci">std::string description() override</div><div class="ttdoc">Plugin description getter.</div><div class="ttdef"><b>Definition:</b> <a href="SamplePlugin_8cpp_source.html#l00015">SamplePlugin.cpp:15</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1AttestPluginLoader_html_afab5cf22c02c024ebab879e41413a923"><div class="ttname"><a href="classopenrdv_1_1AttestPluginLoader.html#afab5cf22c02c024ebab879e41413a923">openrdv::AttestPluginLoader::loadDirectory</a></div><div class="ttdeci">int loadDirectory(const boost::filesystem::path &amp;Path)</div><div class="ttdoc">Load all plugins in the specified directory.</div><div class="ttdef"><b>Definition:</b> <a href="AttestPluginLoader_8cpp_source.html#l00029">AttestPluginLoader.cpp:29</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 18 2021 17:02:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 19 2021 01:34:41 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

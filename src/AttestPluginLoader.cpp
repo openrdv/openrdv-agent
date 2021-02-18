@@ -2,7 +2,6 @@
 
 #include <boost/dll.hpp>
 #include <iostream>
-#include <utility>
 
 using boost::shared_ptr;
 
@@ -56,8 +55,7 @@ bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> Plugin) {
     if (Status == AttestStatus::InitializeSuccess) {
       Providers.push_back(Plugin);
       std::cout << "Initialized plugin: " << Plugin->name() << " ["
-                << Plugin->description() << "]"
-                << "\n";
+                << Plugin->description() << "]\n";
       return true;
     }
     std::cout << "Failed to initialize plugin: " << Plugin->name() << "\n";
