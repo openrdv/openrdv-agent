@@ -15,7 +15,7 @@ endif()
 include_directories(include)
 
 # ----- AGENT EXECUTABLE -----
-add_executable(openrdv_agent main.cpp src/AttestPluginLoader.cpp)
+add_executable(openrdv_agent main.cpp src/AttestPluginLoader.cpp src/AttestManager.cpp)
 target_link_libraries(openrdv_agent ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
 
 # ----- SAMPLE PLUGIN SHARED LIBRARY -----

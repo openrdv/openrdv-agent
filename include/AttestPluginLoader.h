@@ -33,7 +33,7 @@ public:
    * @param Path to a directory.
    * @return @c int number of loaded libraries.
    */
-  int loadDirectory(const std::string &Path);
+  int loadDirectory(const boost::filesystem::path &Path);
 
   /**
    * @brief Load library as plugin.

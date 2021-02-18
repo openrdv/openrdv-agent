@@ -27,7 +27,7 @@ AttestPluginLoader::loadFile(const boost::filesystem::path &Path) {
   return Plugin;
 }
 
-int AttestPluginLoader::loadDirectory(const std::string &Path) {
+int AttestPluginLoader::loadDirectory(const boost::filesystem::path &Path) {
   using namespace boost::filesystem;
   boost::filesystem::path Dir(Path);
   int Count = -1;

@@ -7,7 +7,7 @@
 
 namespace openrdv {
 
-typedef std::unordered_map<std::string, std::string> AttestResult;
+using AttestResult = std::unordered_map<std::string, std::string>;
 
 enum class AttestStatus {
   InitializeSuccess,
