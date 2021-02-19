@@ -1,5 +1,4 @@
 #include <AttestPluginLoader.h>
-
 #include <boost/dll.hpp>
 #include <iostream>
 
@@ -7,12 +6,14 @@ using boost::shared_ptr;
 
 using namespace openrdv;
 
-static bool isLibraryExtension(boost::filesystem::path Ex) {
+namespace {
+bool isLibraryExtension(boost::filesystem::path Ex) {
   if (Ex == ".so" || Ex == ".dll") {
     return true;
   }
   return false;
 }
+} // namespace
 
 std::vector<shared_ptr<AttestPlugin>> AttestPluginLoader::providers() {
   return Providers;
@@ -20,30 +21,31 @@ std::vector<shared_ptr<AttestPlugin>> AttestPluginLoader::providers() {
 
 shared_ptr<AttestPlugin>
 AttestPluginLoader::loadFile(const boost::filesystem::path &Path) {
-  shared_ptr<AttestPlugin> Plugin;
-  Plugin = boost::dll::import<AttestPlugin>(
-      Path, "Plugin", boost::dll::load_mode::append_decorations);
+  auto Plugin = boost::dll::import<AttestPlugin>(
+      Path, PluginSymbolName, boost::dll::load_mode::append_decorations);
   return Plugin;
 }
 
-int AttestPluginLoader::loadDirectory(const boost::filesystem::path &Path) {
+LoadDirectoryResult
+AttestPluginLoader::loadDirectory(const boost::filesystem::path &Path) {
   using namespace boost::filesystem;
   boost::filesystem::path Dir(Path);
-  int Count = -1;
-  try {
-    if (exists(Dir) && is_directory(Dir)) {
-      Count = 0;
-      for (auto It = directory_iterator(Dir); It != directory_iterator();
-           It++) {
+  LoadDirectoryResult Count = -1;
+
+  if (exists(Dir) && is_directory(Dir)) {
+    Count = 0;
+    for (auto It = directory_iterator(Dir); It != directory_iterator(); It++) {
+      try {
         if (isLibraryExtension(It->path().extension())) {
           auto Plugin = loadFile(It->path());
           if (initializePlugin(Plugin))
             Count++;
         }
+      } catch (const std::exception &E) {
+        err() << "Failed to load library at " << It->path() << "\n";
+        err() << E.what() << "\n";
       }
     }
-  } catch (const std::exception &E) {
-    std::cout << E.what() << "\n";
   }
 
   return Count;
@@ -54,11 +56,11 @@ bool AttestPluginLoader::initializePlugin(shared_ptr<AttestPlugin> Plugin) {
     auto Status = Plugin->initialize();
     if (Status == AttestStatus::InitializeSuccess) {
       Providers.push_back(Plugin);
-      std::cout << "Initialized plugin: " << Plugin->name() << " ["
-                << Plugin->description() << "]\n";
+      info() << "Initialized plugin: " << Plugin->name() << ": "
+             << Plugin->description() << "\n";
       return true;
     }
-    std::cout << "Failed to initialize plugin: " << Plugin->name() << "\n";
+    err() << "Failed to initialize plugin: " << Plugin->name() << "\n";
   }
   return false;
 }

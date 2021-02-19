@@ -1,5 +1,5 @@
-#ifndef ATTESTMANAGER_H
-#define ATTESTMANAGER_H
+#ifndef OPENRDV_AGENT_ATTESTMANAGER_H
+#define OPENRDV_AGENT_ATTESTMANAGER_H
 
 #include "AttestPluginLoader.h"
 #include <boost/filesystem.hpp>
@@ -9,14 +9,21 @@ namespace openrdv {
 
 using AttestResultMap = std::unordered_map<std::string, AttestResult>;
 
+/**
+ * @brief Manages loading plugins and running tests.
+ */
 class AttestManager {
 private:
   std::unique_ptr<AttestPluginLoader> PluginLoader;
 
 public:
-  explicit AttestManager() = default;
   /**
-   * Initialize manager with the specified directory.
+   * @brief Default constructor.
+   */
+  explicit AttestManager();
+
+  /**
+   * @brief Initialize manager with the specified directory.
    *
    * Creates @c AttestPluginLoader and tries to load plugins
    * from the specified directory.
@@ -25,13 +32,21 @@ public:
   AttestManager(const boost::filesystem::path &Directory);
 
   /**
-   * Run all tests.
+   * @brief Run all tests.
    *
    * @return @c AttestResultMap results for all providers.
    */
   AttestResultMap runTests();
+
+  /**
+   * @brief Scan the given directory for plugins.
+   *
+   * @param Directory where to look for plugins.
+   * @return number of plugins loaded or @c -1 if not directory.
+   */
+  LoadDirectoryResult searchProviders(const boost::filesystem::path &Directory);
 };
 
 } // namespace openrdv
 
-#endif // ATTESTMANAGER_H
+#endif // OPENRDV_AGENT_ATTESTMANAGER_H

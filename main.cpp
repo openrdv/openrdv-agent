@@ -10,13 +10,15 @@ std::ostream &operator<<(std::ostream &Out, const AttestResultSingle &Pair) {
 }
 
 int main(int argc, char **argv) {
-  openrdv::AttestManager Manager(".");
-  auto TestResults = Manager.runTests();
-  for (const auto &TestResult : TestResults) {
-    std::cout << "-- " << TestResult.first << "\n";
-    std::for_each(
-        TestResult.second.begin(), TestResult.second.end(),
-        [](const AttestResultSingle &Pair) { std::cout << Pair << "\n"; });
-  }
+  AttestManager Manager;
+  Manager.searchProviders(".");
+  AttestResultMap Results = Manager.runTests();
+  std::for_each(Results.begin(), Results.end(), [](std::pair<std::string, AttestResult> Result) {
+    std::cout << "===> " << Result.first << "\n";
+    std::for_each(Result.second.begin(), Result.second.end(), [](AttestResultSingle ResultPair) {
+      std::cout << "=> " << ResultPair.first << " : " << ResultPair.second << "\n";
+    });
+  });
+
   return 0;
 }

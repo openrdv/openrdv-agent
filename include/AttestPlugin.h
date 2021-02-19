@@ -1,5 +1,5 @@
-#ifndef ATTESTPLUGIN_H
-#define ATTESTPLUGIN_H
+#ifndef OPENRDV_AGENT_ATTESTPLUGIN_H
+#define OPENRDV_AGENT_ATTESTPLUGIN_H
 
 #include <boost/config.hpp>
 #include <string>
@@ -18,6 +18,11 @@ enum class AttestStatus {
   CleanupSuccess,
   CleanupErrorUnknown
 };
+
+/**
+ * @brief Default symbol name for plugin export/import.
+ */
+const std::string PluginSymbolName = "Plugin";
 
 /**
  * @brief Attestation plugin interface.
@@ -64,4 +69,4 @@ public:
 
 } // namespace openrdv
 
-#endif // ATTESTPLUGIN_H
+#endif // OPENRDV_AGENT_ATTESTPLUGIN_H

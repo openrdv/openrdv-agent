@@ -1,6 +1,7 @@
-#ifndef ATTESTPLUGINLOADER_H
-#define ATTESTPLUGINLOADER_H
+#ifndef OPENRDV_AGENT_ATTESTPLUGINLOADER_H
+#define OPENRDV_AGENT_ATTESTPLUGINLOADER_H
 
+#include "LogStreamDecorator.h"
 #include <AttestPlugin.h>
 #include <boost/filesystem/path.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
@@ -11,12 +12,14 @@ namespace openrdv {
 
 using boost::shared_ptr;
 
+using LoadDirectoryResult = long;
+
 /**
  * @brief Attestation plugin loader.
  *
  * Loads plugins from the specified directory or file.
  */
-class AttestPluginLoader {
+class AttestPluginLoader : LogStreamDecorator<AttestPluginLoader> {
 private:
   std::vector<shared_ptr<AttestPlugin>> Providers;
 
@@ -33,7 +36,7 @@ public:
    * @param Path to a directory.
    * @return @c int number of loaded libraries.
    */
-  int loadDirectory(const boost::filesystem::path &Path);
+  LoadDirectoryResult loadDirectory(const boost::filesystem::path &Path);
 
   /**
    * @brief Load library as plugin.
@@ -55,4 +58,4 @@ public:
 
 } // namespace openrdv
 
-#endif // ATTESTPLUGINLOADER_H
+#endif // OPENRDV_AGENT_ATTESTPLUGINLOADER_H

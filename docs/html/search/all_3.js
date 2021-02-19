@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initialize_5',['initialize',['../classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210',1,'openrdv::AttestPlugin::initialize()'],['../classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c',1,'SamplePlugin::initialize()']]]
+  ['err_5',['err',['../classopenrdv_1_1LogStreamDecorator.html#a551e713264f79fc6a09da77d2bcebc4e',1,'openrdv::LogStreamDecorator']]]
 ];
