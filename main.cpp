@@ -1,5 +1,6 @@
 #include <AttestManager.h>
 #include <AttestPluginLoader.h>
+#include <ServerConnection.h>
 #include <iostream>
 
 using namespace openrdv;
@@ -19,6 +20,11 @@ int main(int argc, char **argv) {
       std::cout << "=> " << ResultPair.first << " : " << ResultPair.second << "\n";
     });
   });
+
+  ServerConnection Connection("localhost", "8080");
+  Connection.sendRegisterDevice();
+  auto RegisterResults = Connection.getResponse();
+  std::cout << RegisterResults << "\n";
 
   return 0;
 }

@@ -14,9 +14,12 @@ endif()
 
 include_directories(include)
 
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
 # ----- AGENT EXECUTABLE -----
-add_executable(openrdv_agent main.cpp src/AttestPluginLoader.cpp src/AttestManager.cpp)
-target_link_libraries(openrdv_agent ${Boost_LIBRARIES} ${CMAKE_DL_LIBS})
+add_executable(openrdv_agent main.cpp src/AttestPluginLoader.cpp src/AttestManager.cpp src/ServerConnection.cpp include/ServerConnection.h)
+target_link_libraries(openrdv_agent ${Boost_LIBRARIES} ${CMAKE_DL_LIBS} Threads::Threads)
 
 # ----- SAMPLE PLUGIN SHARED LIBRARY -----
 add_library(sample_plugin SHARED plugins/SamplePlugin.cpp)
