@@ -1,0 +1,4 @@
+<map id="openrdv::ServerConnection" name="openrdv::ServerConnection">
+<area shape="rect" id="node1" title="Communicate with the server via HTTP/HTTPS." alt="" coords="15,95,212,121"/>
+<area shape="rect" id="node2" href="$classopenrdv_1_1LogStreamDecorator.html" title=" " alt="" coords="5,5,221,47"/>
+</map>

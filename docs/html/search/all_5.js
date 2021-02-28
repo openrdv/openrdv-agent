@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['loaddirectory_8',['loadDirectory',['../classopenrdv_1_1AttestPluginLoader.html#a2e123c813a64fdcd3359bdc203d59be3',1,'openrdv::AttestPluginLoader']]],
-  ['loadfile_9',['loadFile',['../classopenrdv_1_1AttestPluginLoader.html#a0f5ba088da7c8c6ad2c9d00b835111f4',1,'openrdv::AttestPluginLoader']]],
-  ['logstreamdecorator_10',['LogStreamDecorator',['../classopenrdv_1_1LogStreamDecorator.html',1,'openrdv']]],
-  ['logstreamdecorator_3c_20attestpluginloader_20_3e_11',['LogStreamDecorator&lt; AttestPluginLoader &gt;',['../classopenrdv_1_1LogStreamDecorator.html',1,'openrdv']]]
+  ['info_7',['info',['../classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd',1,'openrdv::LogStreamDecorator']]],
+  ['initialize_8',['initialize',['../classopenrdv_1_1AttestPlugin.html#a78d6dce70dbe1dccac3e56f17c55c210',1,'openrdv::AttestPlugin::initialize()'],['../classSamplePlugin.html#a95f7080493a79fc88c46bf519568720c',1,'SamplePlugin::initialize()']]]
 ];
