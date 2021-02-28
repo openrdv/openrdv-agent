@@ -6,7 +6,12 @@ class SamplePlugin : public AttestPlugin {
 public:
   AttestStatus initialize() override { return AttestStatus::InitializeSuccess; }
 
-  AttestResult run() override { return {{"status", "correct"}, {"code", "0"}}; }
+  AttestResult run() override {
+    AttestResult Result;
+    Result.put("code", "1");
+    Result.put("safe", "true");
+    return Result;
+  }
 
   AttestStatus cleanup() override { return AttestStatus::CleanupSuccess; }
 

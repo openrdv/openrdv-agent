@@ -7,7 +7,7 @@
 
 namespace openrdv {
 
-using AttestResultMap = std::unordered_map<std::string, AttestResult>;
+using AttestResultMap = boost::property_tree::ptree;
 
 /**
  * @brief Manages loading plugins and running tests.

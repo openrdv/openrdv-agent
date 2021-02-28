@@ -1,12 +1,14 @@
 #ifndef OPENRDV_AGENT_SERVERCONNECTION_H
 #define OPENRDV_AGENT_SERVERCONNECTION_H
 
+#include <AttestPlugin.h>
 #include <LogStreamDecorator.h>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
 #include <boost/beast/version.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include <string>
 
 namespace beast = boost::beast;
@@ -42,14 +44,14 @@ public:
   /**
    * @brief Send results of the most recent test.
    */
-  void sendAttestResults();
+  void sendAttestResults(const std::string& DeviceID, const AttestResult& Result);
 
   /**
    * @brief Get the response for a just-sent request.
    *
    * @return @c http::response<http::dynamic_body> server response.
    */
-  http::response<http::dynamic_body> getResponse();
+  boost::property_tree::ptree getResponse();
 
 private:
   net::io_context Ioc;

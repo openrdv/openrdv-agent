@@ -17,7 +17,7 @@ AttestResultMap AttestManager::runTests() {
   if (PluginLoader != nullptr) {
     auto Providers = PluginLoader->providers();
     for (const auto &Provider : Providers) {
-      Result[Provider->name()] = Provider->run();
+      Result.add_child(Provider->name(), Provider->run());
     }
   }
   return Result;

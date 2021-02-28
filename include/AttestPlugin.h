@@ -2,13 +2,13 @@
 #define OPENRDV_AGENT_ATTESTPLUGIN_H
 
 #include <boost/config.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include <string>
 #include <unordered_map>
 
 namespace openrdv {
 
-using AttestResult = std::unordered_map<std::string, std::string>;
-using AttestResultSingle = std::pair<std::string, std::string>;
+using AttestResult = boost::property_tree::ptree;
 
 enum class AttestStatus {
   InitializeSuccess,
