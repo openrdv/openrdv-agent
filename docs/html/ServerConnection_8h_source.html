@@ -98,21 +98,21 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">sendRegisterDevice</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">sendAttestResults</a>(<span class="keyword">const</span> std::string&amp; DeviceID, <span class="keyword">const</span> AttestResult&amp; Result);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">getResponse</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  net::io_context Ioc;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  tcp::resolver Resolver;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  beast::tcp_stream TcpStream;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  std::string Host;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  std::string Port;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace openrdv</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // OPENRDV_AGENT_SERVERCONNECTION_H</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">sendAttestResults</a>(<span class="keyword">const</span> std::string&amp; DeviceID, <span class="keyword">const</span> AttestResult&amp; Result);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">getResponse</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  net::io_context Ioc;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  tcp::resolver Resolver;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  beast::tcp_stream TcpStream;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  std::string Host;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  std::string Port;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace openrdv</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif // OPENRDV_AGENT_SERVERCONNECTION_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a1835337ee174ed89bc348edc9d830972"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">openrdv::ServerConnection::getResponse</a></div><div class="ttdeci">boost::property_tree::ptree getResponse()</div><div class="ttdoc">Get the response for a just-sent request.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00043">ServerConnection.cpp:43</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a47ced239532cbae54838af39b2da4937"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">openrdv::ServerConnection::sendAttestResults</a></div><div class="ttdeci">void sendAttestResults(const std::string &amp;DeviceID, const AttestResult &amp;Result)</div><div class="ttdoc">Send results of the most recent test.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00026">ServerConnection.cpp:26</a></div></div>
@@ -123,7 +123,7 @@ $(function() {
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_aeb81b3c4cb797645bb1171d637d81685"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">openrdv::ServerConnection::sendRegisterDevice</a></div><div class="ttdeci">void sendRegisterDevice()</div><div class="ttdoc">Send device information to perform registration.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00015">ServerConnection.cpp:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Feb 28 2021 22:07:29 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Feb 28 2021 22:11:20 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

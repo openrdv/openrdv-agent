@@ -43,6 +43,9 @@ public:
 
   /**
    * @brief Send results of the most recent test.
+   *
+   * @param DeviceID This device's ID.
+   * @param Result Attest results.
    */
   void sendAttestResults(const std::string& DeviceID, const AttestResult& Result);
 
