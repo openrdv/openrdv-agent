@@ -47,7 +47,8 @@ public:
    * @param DeviceID This device's ID.
    * @param Result Attest results.
    */
-  void sendAttestResults(const std::string& DeviceID, const AttestResult& Result);
+  void sendAttestResults(const std::string &DeviceID,
+                         const AttestResult &Result);
 
   /**
    * @brief Get the response for a just-sent request.

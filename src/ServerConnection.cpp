@@ -23,14 +23,17 @@ void ServerConnection::sendRegisterDevice() {
   http::write(TcpStream, Request);
 }
 
-void ServerConnection::sendAttestResults(const std::string& DeviceID, const AttestResult& Result) {
+void ServerConnection::sendAttestResults(const std::string &DeviceID,
+                                         const AttestResult &Result) {
+  // Make json from data
   boost::property_tree::ptree Pt;
   Pt.put("device_id", DeviceID);
-  Pt.add_child("attest", Result);
+  Pt.add_child("result", Result);
   std::stringstream JsonStream;
   boost::property_tree::json_parser::write_json(JsonStream, Pt, false);
   info() << JsonStream.str();
 
+  // Create request
   http::request<http::string_body> Request{http::verb::post, "/attests", 11};
   Request.set(http::field::host, Host);
   Request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
