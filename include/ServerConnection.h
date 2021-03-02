@@ -38,16 +38,20 @@ public:
 
   /**
    * @brief Send device information to perform registration.
+   *
+   * @param UID Device's unique ID.
+   * @param UIDType Type of ID, e.g. @c IMEI.
    */
-  void sendRegisterDevice();
+  void sendRegisterDevice(const std::string &UID, const std::string &UIDType);
 
   /**
    * @brief Send results of the most recent test.
    *
-   * @param DeviceID This device's ID.
+   * @param UID This device's ID.
+   * @param Token Access token received from server.
    * @param Result Attest results.
    */
-  void sendAttestResults(const std::string &DeviceID,
+  void sendAttestResults(const std::string &UID, const std::string &Token,
                          const AttestResult &Result);
 
   /**

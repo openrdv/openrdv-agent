@@ -96,35 +96,35 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">~ServerConnection</a>();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">sendRegisterDevice</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">sendAttestResults</a>(<span class="keyword">const</span> std::string &amp;DeviceID,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                         <span class="keyword">const</span> AttestResult &amp;Result);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">getResponse</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  net::io_context Ioc;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  tcp::resolver Resolver;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  beast::tcp_stream TcpStream;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  std::string Host;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::string Port;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">// namespace openrdv</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif // OPENRDV_AGENT_SERVERCONNECTION_H</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">sendRegisterDevice</a>(<span class="keyword">const</span> std::string &amp;UID, <span class="keyword">const</span> std::string &amp;UIDType);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">sendAttestResults</a>(<span class="keyword">const</span> std::string &amp;UID, <span class="keyword">const</span> std::string &amp;Token,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                         <span class="keyword">const</span> AttestResult &amp;Result);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">getResponse</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  net::io_context Ioc;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  tcp::resolver Resolver;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  beast::tcp_stream TcpStream;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::string Host;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  std::string Port;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// namespace openrdv</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif // OPENRDV_AGENT_SERVERCONNECTION_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a1835337ee174ed89bc348edc9d830972"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">openrdv::ServerConnection::getResponse</a></div><div class="ttdeci">boost::property_tree::ptree getResponse()</div><div class="ttdoc">Get the response for a just-sent request.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00046">ServerConnection.cpp:46</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a47ced239532cbae54838af39b2da4937"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">openrdv::ServerConnection::sendAttestResults</a></div><div class="ttdeci">void sendAttestResults(const std::string &amp;DeviceID, const AttestResult &amp;Result)</div><div class="ttdoc">Send results of the most recent test.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00026">ServerConnection.cpp:26</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a61258788ab730eb5f0ebf0e45b5be103"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">openrdv::ServerConnection::sendRegisterDevice</a></div><div class="ttdeci">void sendRegisterDevice(const std::string &amp;UID, const std::string &amp;UIDType)</div><div class="ttdoc">Send device information to perform registration.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00015">ServerConnection.cpp:15</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a1835337ee174ed89bc348edc9d830972"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">openrdv::ServerConnection::getResponse</a></div><div class="ttdeci">boost::property_tree::ptree getResponse()</div><div class="ttdoc">Get the response for a just-sent request.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00057">ServerConnection.cpp:57</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1LogStreamDecorator_html"><div class="ttname"><a href="classopenrdv_1_1LogStreamDecorator.html">openrdv::LogStreamDecorator</a></div><div class="ttdoc">Utilize CRTP to beautify log messages.</div><div class="ttdef"><b>Definition:</b> <a href="LogStreamDecorator_8h_source.html#l00013">LogStreamDecorator.h:13</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a3463d424c9a17eecbbe02eca151a6b65"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a3463d424c9a17eecbbe02eca151a6b65">openrdv::ServerConnection::ServerConnection</a></div><div class="ttdeci">ServerConnection(const std::string &amp;Host, const std::string &amp;Port)</div><div class="ttdoc">Create connection with the given host and port.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00006">ServerConnection.cpp:6</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_af919491d0e2ff066b0a58cc50fc0d90d"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">openrdv::ServerConnection::~ServerConnection</a></div><div class="ttdeci">~ServerConnection()</div><div class="ttdoc">Cleanup, close connection.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00013">ServerConnection.cpp:13</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a3acb971389cffdfbb2bbee8e74a20523"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">openrdv::ServerConnection::sendAttestResults</a></div><div class="ttdeci">void sendAttestResults(const std::string &amp;UID, const std::string &amp;Token, const AttestResult &amp;Result)</div><div class="ttdoc">Send results of the most recent test.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00035">ServerConnection.cpp:35</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html">openrdv::ServerConnection</a></div><div class="ttdoc">Communicate with the server via HTTP/HTTPS.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8h_source.html#l00024">ServerConnection.h:24</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_aeb81b3c4cb797645bb1171d637d81685"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">openrdv::ServerConnection::sendRegisterDevice</a></div><div class="ttdeci">void sendRegisterDevice()</div><div class="ttdoc">Send device information to perform registration.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00015">ServerConnection.cpp:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 2 2021 17:17:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 2 2021 18:57:45 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

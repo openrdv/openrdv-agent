@@ -106,13 +106,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">~ServerConnection</a> ()</td></tr>
 <tr class="memdesc:af919491d0e2ff066b0a58cc50fc0d90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleanup, close connection. <br /></td></tr>
 <tr class="separator:af919491d0e2ff066b0a58cc50fc0d90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb81b3c4cb797645bb1171d637d81685"><td class="memItemLeft" align="right" valign="top"><a id="aeb81b3c4cb797645bb1171d637d81685"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">sendRegisterDevice</a> ()</td></tr>
-<tr class="memdesc:aeb81b3c4cb797645bb1171d637d81685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send device information to perform registration. <br /></td></tr>
-<tr class="separator:aeb81b3c4cb797645bb1171d637d81685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47ced239532cbae54838af39b2da4937"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">sendAttestResults</a> (const std::string &amp;DeviceID, const AttestResult &amp;Result)</td></tr>
-<tr class="memdesc:a47ced239532cbae54838af39b2da4937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send results of the most recent test.  <a href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">More...</a><br /></td></tr>
-<tr class="separator:a47ced239532cbae54838af39b2da4937"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61258788ab730eb5f0ebf0e45b5be103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">sendRegisterDevice</a> (const std::string &amp;UID, const std::string &amp;UIDType)</td></tr>
+<tr class="memdesc:a61258788ab730eb5f0ebf0e45b5be103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send device information to perform registration.  <a href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">More...</a><br /></td></tr>
+<tr class="separator:a61258788ab730eb5f0ebf0e45b5be103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3acb971389cffdfbb2bbee8e74a20523"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">sendAttestResults</a> (const std::string &amp;UID, const std::string &amp;Token, const AttestResult &amp;Result)</td></tr>
+<tr class="memdesc:a3acb971389cffdfbb2bbee8e74a20523"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send results of the most recent test.  <a href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">More...</a><br /></td></tr>
+<tr class="separator:a3acb971389cffdfbb2bbee8e74a20523"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1835337ee174ed89bc348edc9d830972"><td class="memItemLeft" align="right" valign="top">boost::property_tree::ptree&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">getResponse</a> ()</td></tr>
 <tr class="memdesc:a1835337ee174ed89bc348edc9d830972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the response for a just-sent request.  <a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">More...</a><br /></td></tr>
 <tr class="separator:a1835337ee174ed89bc348edc9d830972"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,12 +187,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Get the response for a just-sent request. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>http::response&lt;http::dynamic_body&gt;</code> server response. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ServerConnection_8cpp_source.html#l00046">46</a> of file <a class="el" href="ServerConnection_8cpp_source.html">ServerConnection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ServerConnection_8cpp_source.html#l00057">57</a> of file <a class="el" href="ServerConnection_8cpp_source.html">ServerConnection.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="LogStreamDecorator_8h_source.html#l00038">openrdv::LogStreamDecorator&lt; ServerConnection &gt;::info()</a>.</p>
 
 </div>
 </div>
-<a id="a47ced239532cbae54838af39b2da4937"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47ced239532cbae54838af39b2da4937">&#9670;&nbsp;</a></span>sendAttestResults()</h2>
+<a id="a3acb971389cffdfbb2bbee8e74a20523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3acb971389cffdfbb2bbee8e74a20523">&#9670;&nbsp;</a></span>sendAttestResults()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +203,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="memname">void ServerConnection::sendAttestResults </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>DeviceID</em>, </td>
+          <td class="paramname"><em>UID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>Token</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -221,13 +228,55 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Send results of the most recent test. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">DeviceID</td><td>This device's ID. </td></tr>
+    <tr><td class="paramname">UID</td><td>This device's ID. </td></tr>
+    <tr><td class="paramname">Token</td><td>Access token received from server. </td></tr>
     <tr><td class="paramname">Result</td><td>Attest results. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ServerConnection_8cpp_source.html#l00026">26</a> of file <a class="el" href="ServerConnection_8cpp_source.html">ServerConnection.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ServerConnection_8cpp_source.html#l00035">35</a> of file <a class="el" href="ServerConnection_8cpp_source.html">ServerConnection.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="LogStreamDecorator_8h_source.html#l00038">openrdv::LogStreamDecorator&lt; ServerConnection &gt;::info()</a>.</p>
+
+</div>
+</div>
+<a id="a61258788ab730eb5f0ebf0e45b5be103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61258788ab730eb5f0ebf0e45b5be103">&#9670;&nbsp;</a></span>sendRegisterDevice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerConnection::sendRegisterDevice </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>UID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>UIDType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send device information to perform registration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">UID</td><td>Device's unique ID. </td></tr>
+    <tr><td class="paramname">UIDType</td><td>Type of ID, e.g. <code>IMEI</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ServerConnection_8cpp_source.html#l00015">15</a> of file <a class="el" href="ServerConnection_8cpp_source.html">ServerConnection.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="LogStreamDecorator_8h_source.html#l00038">openrdv::LogStreamDecorator&lt; ServerConnection &gt;::info()</a>.</p>
 
@@ -240,7 +289,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 2 2021 17:17:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 2 2021 18:57:45 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

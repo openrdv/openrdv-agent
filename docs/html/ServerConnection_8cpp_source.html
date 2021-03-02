@@ -84,57 +84,69 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">   13</a></span>&#160;<a class="code" href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">ServerConnection::~ServerConnection</a>() { TcpStream.close(); }</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">ServerConnection::sendRegisterDevice</a>() {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="comment">// TODO: actually send device info</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  http::request&lt;http::string_body&gt; Request{http::verb::post, <span class="stringliteral">&quot;/devices&quot;</span>, 11};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  Request.set(http::field::host, Host);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  Request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  Request.set(http::field::content_type, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  Request.body() = <span class="stringliteral">&quot;{}&quot;</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  Request.prepare_payload();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  http::write(TcpStream, Request);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">ServerConnection::sendAttestResults</a>(<span class="keyword">const</span> std::string &amp;DeviceID,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                         <span class="keyword">const</span> AttestResult &amp;Result) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// Make json from data</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  boost::property_tree::ptree Pt;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Pt.put(<span class="stringliteral">&quot;device_id&quot;</span>, DeviceID);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Pt.add_child(<span class="stringliteral">&quot;result&quot;</span>, Result);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  std::stringstream JsonStream;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  boost::property_tree::json_parser::write_json(JsonStream, Pt, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd">info</a>() &lt;&lt; JsonStream.str();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="comment">// Create request</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  http::request&lt;http::string_body&gt; Request{http::verb::post, <span class="stringliteral">&quot;/attests&quot;</span>, 11};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  Request.set(http::field::host, Host);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  Request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Request.set(http::field::content_type, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Request.body() = JsonStream.str();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Request.prepare_payload();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  http::write(TcpStream, Request);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">   46</a></span>&#160;boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">ServerConnection::getResponse</a>() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  beast::flat_buffer Buffer;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  http::response&lt;http::string_body&gt; Response;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  http::read(TcpStream, Buffer, Response);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  boost::property_tree::ptree PropertyTree;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  std::stringstream ResultsStream;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  ResultsStream &lt;&lt; Response.body();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  boost::property_tree::json_parser::read_json(ResultsStream, PropertyTree);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> PropertyTree;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">ServerConnection::sendRegisterDevice</a>(<span class="keyword">const</span> std::string &amp;UID,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                          <span class="keyword">const</span> std::string &amp;UIDType) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="comment">// Make json from data</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  boost::property_tree::ptree Pt;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  Pt.put(<span class="stringliteral">&quot;uid&quot;</span>, UID);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  Pt.put(<span class="stringliteral">&quot;uid_type&quot;</span>, UIDType);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::stringstream JsonStream;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  boost::property_tree::json_parser::write_json(JsonStream, Pt, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd">info</a>() &lt;&lt; <span class="stringliteral">&quot;REGISTER: &quot;</span> &lt;&lt; JsonStream.str();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// Create request</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  http::request&lt;http::string_body&gt; Request{http::verb::post, <span class="stringliteral">&quot;/devices&quot;</span>, 11};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  Request.set(http::field::host, Host);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  Request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Request.set(http::field::content_type, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Request.body() = JsonStream.str();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Request.prepare_payload();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  http::write(TcpStream, Request);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">ServerConnection::sendAttestResults</a>(<span class="keyword">const</span> std::string &amp;UID,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                         <span class="keyword">const</span> std::string &amp;Token,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                         <span class="keyword">const</span> AttestResult &amp;Result) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">// Make json from data</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  boost::property_tree::ptree Pt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  Pt.put(<span class="stringliteral">&quot;uid&quot;</span>, UID);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  Pt.put(<span class="stringliteral">&quot;token&quot;</span>, Token);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  Pt.add_child(<span class="stringliteral">&quot;result&quot;</span>, Result);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::stringstream JsonStream;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  boost::property_tree::json_parser::write_json(JsonStream, Pt, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd">info</a>() &lt;&lt; <span class="stringliteral">&quot;ATTEST: &quot;</span> &lt;&lt; JsonStream.str();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">// Create request</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  http::request&lt;http::string_body&gt; Request{http::verb::post, <span class="stringliteral">&quot;/attests&quot;</span>, 11};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Request.set(http::field::host, Host);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Request.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  Request.set(http::field::content_type, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  Request.body() = JsonStream.str();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Request.prepare_payload();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  http::write(TcpStream, Request);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">   57</a></span>&#160;boost::property_tree::ptree <a class="code" href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">ServerConnection::getResponse</a>() {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  beast::flat_buffer Buffer;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  http::response&lt;http::string_body&gt; Response;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  http::read(TcpStream, Buffer, Response);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  boost::property_tree::ptree PropertyTree;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  std::stringstream ResultsStream;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  ResultsStream &lt;&lt; Response.body();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  boost::property_tree::json_parser::read_json(ResultsStream, PropertyTree);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd">info</a>() &lt;&lt; <span class="stringliteral">&quot;RESPONSE: &quot;</span> &lt;&lt; Response.body();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> PropertyTree;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a1835337ee174ed89bc348edc9d830972"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">openrdv::ServerConnection::getResponse</a></div><div class="ttdeci">boost::property_tree::ptree getResponse()</div><div class="ttdoc">Get the response for a just-sent request.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00046">ServerConnection.cpp:46</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a47ced239532cbae54838af39b2da4937"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a47ced239532cbae54838af39b2da4937">openrdv::ServerConnection::sendAttestResults</a></div><div class="ttdeci">void sendAttestResults(const std::string &amp;DeviceID, const AttestResult &amp;Result)</div><div class="ttdoc">Send results of the most recent test.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00026">ServerConnection.cpp:26</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a61258788ab730eb5f0ebf0e45b5be103"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a61258788ab730eb5f0ebf0e45b5be103">openrdv::ServerConnection::sendRegisterDevice</a></div><div class="ttdeci">void sendRegisterDevice(const std::string &amp;UID, const std::string &amp;UIDType)</div><div class="ttdoc">Send device information to perform registration.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00015">ServerConnection.cpp:15</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a1835337ee174ed89bc348edc9d830972"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a1835337ee174ed89bc348edc9d830972">openrdv::ServerConnection::getResponse</a></div><div class="ttdeci">boost::property_tree::ptree getResponse()</div><div class="ttdoc">Get the response for a just-sent request.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00057">ServerConnection.cpp:57</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a3463d424c9a17eecbbe02eca151a6b65"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a3463d424c9a17eecbbe02eca151a6b65">openrdv::ServerConnection::ServerConnection</a></div><div class="ttdeci">ServerConnection(const std::string &amp;Host, const std::string &amp;Port)</div><div class="ttdoc">Create connection with the given host and port.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00006">ServerConnection.cpp:6</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1LogStreamDecorator_html_ab67c08f7cc87f68bbea1d6460b60f9fd"><div class="ttname"><a href="classopenrdv_1_1LogStreamDecorator.html#ab67c08f7cc87f68bbea1d6460b60f9fd">openrdv::LogStreamDecorator&lt; ServerConnection &gt;::info</a></div><div class="ttdeci">std::ostream &amp; info()</div><div class="ttdoc">Adds [INFO] to the std::cout and returns it.</div><div class="ttdef"><b>Definition:</b> <a href="LogStreamDecorator_8h_source.html#l00038">LogStreamDecorator.h:38</a></div></div>
 <div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_af919491d0e2ff066b0a58cc50fc0d90d"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#af919491d0e2ff066b0a58cc50fc0d90d">openrdv::ServerConnection::~ServerConnection</a></div><div class="ttdeci">~ServerConnection()</div><div class="ttdoc">Cleanup, close connection.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00013">ServerConnection.cpp:13</a></div></div>
-<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_aeb81b3c4cb797645bb1171d637d81685"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#aeb81b3c4cb797645bb1171d637d81685">openrdv::ServerConnection::sendRegisterDevice</a></div><div class="ttdeci">void sendRegisterDevice()</div><div class="ttdoc">Send device information to perform registration.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00015">ServerConnection.cpp:15</a></div></div>
+<div class="ttc" id="aclassopenrdv_1_1ServerConnection_html_a3acb971389cffdfbb2bbee8e74a20523"><div class="ttname"><a href="classopenrdv_1_1ServerConnection.html#a3acb971389cffdfbb2bbee8e74a20523">openrdv::ServerConnection::sendAttestResults</a></div><div class="ttdeci">void sendAttestResults(const std::string &amp;UID, const std::string &amp;Token, const AttestResult &amp;Result)</div><div class="ttdoc">Send results of the most recent test.</div><div class="ttdef"><b>Definition:</b> <a href="ServerConnection_8cpp_source.html#l00035">ServerConnection.cpp:35</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 2 2021 17:17:17 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Mar 2 2021 18:57:45 for OpenRDV Agent by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>
