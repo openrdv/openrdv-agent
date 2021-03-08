@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
    * Create connection to server and register device
    */
   ServerConnection Connection("localhost", "8080");
-  std::string UID = "super-secret-uid";
+  std::string UID = "pop-os super";
   Connection.sendRegisterDevice(UID, "text");
   auto RegisterResults = Connection.getResponse();
   std::string Token =

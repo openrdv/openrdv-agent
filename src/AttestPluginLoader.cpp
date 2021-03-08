@@ -21,9 +21,15 @@ std::vector<shared_ptr<AttestPlugin>> AttestPluginLoader::providers() {
 
 shared_ptr<AttestPlugin>
 AttestPluginLoader::loadFile(const boost::filesystem::path &Path) {
-  auto Plugin = boost::dll::import<AttestPlugin>(
-      Path, PluginSymbolName, boost::dll::load_mode::append_decorations);
-  return Plugin;
+  try {
+    auto Plugin = boost::dll::import<AttestPlugin>(
+        Path, PluginSymbolName, boost::dll::load_mode::append_decorations);
+    return Plugin;
+  } catch (const std::exception &E) {
+    err() << "Failed to load library at " << Path << "\n";
+    err() << E.what();
+    return nullptr;
+  }
 }
 
 LoadDirectoryResult
@@ -35,15 +41,10 @@ AttestPluginLoader::loadDirectory(const boost::filesystem::path &Path) {
   if (exists(Dir) && is_directory(Dir)) {
     Count = 0;
     for (auto It = directory_iterator(Dir); It != directory_iterator(); It++) {
-      try {
-        if (isLibraryExtension(It->path().extension())) {
-          auto Plugin = loadFile(It->path());
-          if (initializePlugin(Plugin))
-            Count++;
-        }
-      } catch (const std::exception &E) {
-        err() << "Failed to load library at " << It->path() << "\n";
-        err() << E.what() << "\n";
+      if (isLibraryExtension(It->path().extension())) {
+        auto Plugin = loadFile(It->path());
+        if (Plugin != nullptr && initializePlugin(Plugin))
+          Count++;
       }
     }
   }
